@@ -11,6 +11,9 @@
 - AI responses generated via Groq LLM
 - Context-grounded answers (no hallucinated prophecies)
 
+## Link to Streamlit App
+- https://rag-sagittarius-fortune-teller.streamlit.app/
+
 ## How It Works
 
 1. A text file (`horoscope.txt`) is loaded as the knowledge base.
