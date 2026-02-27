@@ -12,7 +12,7 @@
 - Context-grounded answers (no hallucinated prophecies)
 
 ## Link to Streamlit App
-- https://rag-sagittarius-fortune-teller.streamlit.app/
+- https://ragsagittariusfortuneteller.streamlit.app/
 
 ## How It Works
 
