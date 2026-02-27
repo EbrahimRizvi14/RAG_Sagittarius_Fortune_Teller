@@ -2,8 +2,6 @@ import os
 
 from main import Chatbot
 import streamlit as st
-
-bot = Chatbot()
     
 st.set_page_config(page_title="Random Fortune Telling Bot")
 with st.sidebar:
@@ -11,9 +9,11 @@ with st.sidebar:
 
 apikey = st.text_input("Plz give your Groq API Key")
 
+bot = Chatbot(api_key=apikey)
+
 # Function for generating LLM response
 def generate_response(input):
-    result = bot.rag_chain.invoke(input, api_key=apikey)
+    result = bot.rag_chain.invoke(input)
     return result
 
 # Store LLM generated responses
