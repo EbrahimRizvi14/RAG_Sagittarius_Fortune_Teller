@@ -11,10 +11,9 @@ with st.sidebar:
 
 apikey = st.text_input("Plz give your Groq API Key")
 
-os.environ["GROQ_API_KEY"] = apikey
 # Function for generating LLM response
 def generate_response(input):
-    result = bot.rag_chain.invoke(input)
+    result = bot.rag_chain.invoke(input, api_key=apikey)
     return result
 
 # Store LLM generated responses

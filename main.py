@@ -1,3 +1,4 @@
+import os
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -6,12 +7,9 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class Chatbot():
-    def __init__(self):
+    def __init__(self, api_key):
         loader = TextLoader('horoscope.txt')
         documents = loader.load()
         text_splitter = CharacterTextSplitter(chunk_size=150, chunk_overlap=20, separator="\n")
@@ -24,7 +22,8 @@ class Chatbot():
 
         llm = ChatGroq(model='groq/compound',
                      temperature=0,
-                     max_tokens=120)
+                     max_tokens=120,
+                     api_key=api_key)
 
 
         template = """
