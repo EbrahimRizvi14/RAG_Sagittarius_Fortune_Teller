@@ -9,11 +9,12 @@ with st.sidebar:
 
 apikey = st.text_input("Plz give your Groq API Key", type="password")
 
-try:
-    if apikey and apikey.strip():
-        bot = Chatbot(api_key=apikey)
-except Exception as e:
-    st.text(f"Plz enter your API key to initialize the bot.")
+bot = None
+
+if apikey and apikey.strip():
+    bot = Chatbot(api_key=apikey)
+else:
+    st.info("Enter your Groq API key to activate the bot.")
 
 def generate_response(input):
     if bot and input.strip():
