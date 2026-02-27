@@ -7,14 +7,19 @@ st.set_page_config(page_title="Random Fortune Telling Bot")
 with st.sidebar:
     st.title('Random Fortune Telling Bot')
 
-apikey = st.text_input("Plz give your Groq API Key")
+apikey = st.text_input("Plz give your Groq API Key", type="password")
 
-bot = Chatbot(api_key=apikey)
+bot = None
 
-# Function for generating LLM response
+if apikey:
+    bot = Chatbot(api_key=apikey)
+
 def generate_response(input):
-    result = bot.rag_chain.invoke(input)
-    return result
+    if bot and input.strip():
+        result = bot.rag_chain.invoke(input)
+        return result
+    else:
+        return "Please enter your API key and a question."
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
